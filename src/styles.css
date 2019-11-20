@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+.mat-snack-bar-container.red-snackbar{
+    background-color: red !important;
+    color: white;
+}
+
+.mat-snack-bar-container.green-snackbar{
+    background-color: green !important;
+    color: white;
+}

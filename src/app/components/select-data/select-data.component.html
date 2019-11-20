@@ -1,0 +1,38 @@
+<table border="1" *ngIf="videoData">
+    <tr>
+            <th>Video ID</th>
+            <th>Trending Date</th>
+            <th>Video Title</th>
+            <th>Channel Title</th>
+            <th>Category</th>
+            <th>Published Time</th>
+            <th>Tags</th>
+            <th>Number of Views</th>
+            <th>Number of Likes</th>
+            <th>Number of Dislikes</th>
+            <th>Number of Comments</th>
+            <th>Thumbnail Icon</th>
+            <th>Comments Disabled?</th>
+            <th>Ratings Disabled?</th>
+            <th>Video Error?</th>
+            <th>Description</th>
+    </tr>
+    <tr *ngFor="let video of videoData">
+        <td>{{video.videoId}}</td>
+        <td>{{video.trendingDate}}</td>
+        <td>{{video.title}}</td>
+        <td>{{video.channelTitle}}</td>
+        <td>{{video.category}}</td>
+        <td>{{video.publishTime}}</td>
+        <td>{{video.tags}}</td>
+        <td>{{video.views}}</td>
+        <td>{{video.likes}}</td>
+        <td>{{video.dislikes}}</td>
+        <td>{{video.numComments}}</td>
+        <td>{{video.thumbnail}}</td>
+        <td>{{video.comDisabled}}</td>
+        <td>{{video.ratDisabled}}</td>
+        <td>{{video.videoError}}</td>
+        <td>{{video.desc}}</td>
+    </tr>
+</table>
