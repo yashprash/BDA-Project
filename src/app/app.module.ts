@@ -32,6 +32,9 @@ import { UpdateDataComponent } from './components/update-data/update-data.compon
 import { SelectDataComponent } from './components/select-data/select-data.component';
 import { DeleteDataComponent } from './components/delete-data/delete-data.component';
 import { MainContainerComponent } from './components/main-container/main-container.component';
+import { SelectSpecificComponent } from './components/select-specific/select-specific.component';
+import { UpdateSpecificComponent } from './components/update-specific/update-specific.component';
+import { APIResolver } from './services/APIResolver';
 
 
 
@@ -42,7 +45,9 @@ import { MainContainerComponent } from './components/main-container/main-contain
     UpdateDataComponent,
     SelectDataComponent,
     DeleteDataComponent,
-    MainContainerComponent
+    MainContainerComponent,
+    SelectSpecificComponent,
+    UpdateSpecificComponent
   ],
   imports: [
     BrowserModule,
@@ -68,7 +73,7 @@ import { MainContainerComponent } from './components/main-container/main-contain
     MatInputModule,
     MatTabsModule
   ],
-  providers: [SendDataService,MatDatepickerModule],
+  providers: [SendDataService,MatDatepickerModule, APIResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

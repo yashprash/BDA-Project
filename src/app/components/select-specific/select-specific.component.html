@@ -1,0 +1,85 @@
+<div *ngIf="video">
+    <div *ngIf="display">
+        <mat-card>
+            <mat-card-title>
+                Video Details
+            </mat-card-title>
+            <mat-card-content>
+            <table>
+                <tr>
+                    <th>Video ID</th>
+                    <td>{{video[0].videoId}}</td>
+                </tr>
+                <tr>
+                    <th>Trending Date</th>
+                    <td>{{video[0].trendingDate}}</td>
+                </tr>
+                <tr>
+                     <th>Video Title</th>
+                    <td>{{video[0].title}}</td>
+                </tr>
+                <tr>
+                    <th>Channel Title</th>
+                    <td>{{video[0].channelTitle}}</td>
+                </tr>
+                <tr>
+                    <th>Category</th>
+                    <td>{{categories[video[0].category]}}</td>
+                </tr>
+                <tr>
+                    <th>Published Time</th>
+                    <td>{{video[0].publishTime}}</td>
+                </tr>
+                <tr>
+                    <th>Tags</th>
+                    <td>{{video[0].tags}}</td>
+                </tr>
+                <tr>
+                    <th>Number of Views</th>
+                    <td>{{video[0].views}}</td>
+                </tr>
+                <tr>
+                    <th>Number of Likes</th>
+                    <td>{{video[0].likes}}</td>
+                </tr>
+                <tr>
+                    <th>Number of Dislikes</th>
+                    <td>{{video[0].dislikes}}</td>
+                </tr>
+                <tr>
+                    <th>Number of Comments</th>
+                    <td>{{video[0].numComments}}</td>
+                </tr>
+                <tr>
+                    <th>Thumbnail Icon</th>
+                    <td>{{video[0].thumbnail}}</td>
+                </tr>
+                <tr>
+                    <th>Comments Disabled?</th>
+                    <td>{{video[0].comDisabled}}</td>
+                </tr>
+                <tr>
+                    <th>Ratings Disabled?</th>
+                    <td>{{video[0].ratDisabled}}</td>
+                </tr>
+                 <tr>
+                    <th>Video Error?</th>
+                    <td>{{video[0].videoError}}</td>
+                </tr> 
+                 <tr>
+                    <th>Description</th>
+                    <td>{{video[0].desc}}</td>
+                </tr>                             
+            </table>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div *ngIf="!display">
+        <mat-card>
+            <mat-card-title>
+                Sorry, entered video ID is not present in the database!
+            </mat-card-title>
+        </mat-card>
+    </div>
+    <button mat-button (click)="back()">BACK</button>
+</div>

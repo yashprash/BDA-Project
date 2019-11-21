@@ -15,5 +15,23 @@ exports.routers = function(route)
       res.send(response);
     })
   });
+  route.post('/getSpecific',(req,res)=>{
+    services.findDB(collname,{videoId:req.body.videoId},{}).then(response=>{
+      res.send(response);
+    })
+  });
+  route.post('/update',(req,res)=>{
+    var id=req.body.videoId;
+    delete req.body.videoId;
+    services.updateDB(collname,{videoId:id},{$set:req.body}).then(response=>{
+      res.send(response);
+    })
+  });
+  route.post('/delete',(req,res)=>{
+      services.deleteDB(collname,{videoId:req.body.videoId}).then(response=>{
+      res.send(response);
+    })
+  });
+  
   return route;
 }

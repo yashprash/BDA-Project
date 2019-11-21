@@ -1,0 +1,197 @@
+<div *ngIf="video">
+        <div *ngIf="display">
+            <mat-card>
+                <mat-card-title>
+                    Video Details
+                </mat-card-title>
+                <mat-card-content>
+                        <form [formGroup]="videoForm" (ngSubmit)="onSubmit()">
+                                <mat-grid-list cols="2" rowHeight="6:1">
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Trending Date</mat-label>
+                                                <input matInput [matDatepicker]="picker" [value]="video[0].trendingDate" placeholder="Choose a date" formControlName="trendingDate">
+                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                                <mat-datepicker #picker></mat-datepicker>
+                                                <mat-error *ngIf="trendingDate.hasError('required')">
+                                                    Input is required
+                                                </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Video Title</mat-label>
+                                            <input matInput formControlName="title" required>
+                                            <mat-error *ngIf="title.hasError('required')">
+                                                    Input is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Channel Title</mat-label>
+                                            <input matInput formControlName="channelTitle" required>
+                                            <mat-error *ngIf="channelTitle.hasError('required')">
+                                                    Input is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Category</mat-label>
+                                            <mat-select formControlName="category" [(value)]="selectedCat" required>
+                                                <mat-option *ngFor="let cat of categories" [value]="catIds[cat]">
+                                                {{cat}}
+                                                </mat-option>
+                                                <div *ngIf="category.invalid && (category.dirty || category.touched)">
+                                                    <mat-error *ngIf="category.hasError('required')">
+                                                            Input is required
+                                                    </mat-error>
+                                                </div>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Publish Time</mat-label>
+                                            <input matInput formControlName="publishTime" required>
+                                            <mat-error *ngIf="publishTime.hasError('required')">
+                                                    Input is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                    <div class="full-width">
+                                    <mat-form-field style="width:100%">
+                                        <mat-label>Tags</mat-label>
+                                        <textarea matInput formControlName="tags"></textarea>
+                                    </mat-form-field>&nbsp;&nbsp;
+                                    </div>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Number of Views</mat-label>
+                                            <input matInput formControlName="views" required>
+                                            <mat-error *ngIf="views.hasError('required')">
+                                                    Input is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Number of Likes</mat-label>
+                                            <input matInput formControlName="likes" required>
+                                            <mat-error *ngIf="likes.hasError('required')">
+                                                    Input is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Number of Dislikes</mat-label>
+                                            <input matInput formControlName="dislikes" required>
+                                            <mat-error *ngIf="dislikes.hasError('required')">
+                                                    Input is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Number of Comments</mat-label>
+                                            <input matInput formControlName="numComments" required>
+                                            <mat-error *ngIf="numComments.hasError('required')">
+                                                    Input is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Thumbnail Link</mat-label>
+                                            <input matInput formControlName="thumbnail" required>
+                                            <mat-error *ngIf="thumbnail.hasError('required')">
+                                                    Input is required
+                                            </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                            <mat-list>
+                                                Are Comments Disabled?
+                                                <mat-radio-group formControlName="comDisabled" required>
+                                                    <mat-radio-button *ngFor="let type of types" [value]="type">{{type}}</mat-radio-button><br/>
+                                                    <div *ngIf="comDisabled.invalid && (comDisabled.dirty || comDisabled.touched)">
+                                                        <mat-error *ngIf="comDisabled.hasError('required')">
+                                                                Input is required
+                                                        </mat-error>
+                                                    </div>
+                                                </mat-radio-group>
+                                            </mat-list>
+                                        </mat-grid-tile>
+                                    <!-- <mat-grid-tile>
+                                        <mat-list>
+                                            Are Comments Disabled?
+                                            <div *ngIf="com">
+                                                <mat-radio-group formControlName="comDisabled" required>
+                                                    <mat-radio-button [value]="True">True</mat-radio-button><br/>
+                                                    <mat-radio-button [value]="False">False</mat-radio-button><br/>
+                                                </mat-radio-group>
+                                            </div>
+                                            <div *ngIf="!com">
+                                                <mat-radio-group formControlName="comDisabled" required>
+                                                    <mat-radio-button [value]="True">True</mat-radio-button><br/>
+                                                    <mat-radio-button [value]="False">False</mat-radio-button><br/>
+                                                </mat-radio-group>
+                                            </div>
+                                        </mat-list>
+                                    </mat-grid-tile> -->
+                                    <mat-grid-tile>
+                                        <mat-list>
+                                            Are Ratings Disabled?
+                                            <mat-radio-group formControlName="ratDisabled" required>
+                                                <mat-radio-button *ngFor="let type of types" [value]="type">{{type}}</mat-radio-button><br/>
+                                                <div *ngIf="ratDisabled.invalid && (ratDisabled.dirty || ratDisabled.touched)">
+                                                    <mat-error *ngIf="ratDisabled.hasError('required')">
+                                                            Input is required
+                                                    </mat-error>
+                                                </div>
+                                            </mat-radio-group>
+                                        </mat-list>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile>
+                                        <mat-list>
+                                            Is there an error in the video?
+                                            <mat-radio-group formControlName="videoError" required>
+                                                <mat-radio-button *ngFor="let type of types" [value]="type">{{type}}</mat-radio-button><br/>
+                                                <div *ngIf="videoError.invalid && (videoError.dirty || videoError.touched)">
+                                                    <mat-error *ngIf="videoError.hasError('required')">
+                                                            Input is required
+                                                    </mat-error>
+                                                </div>
+                                            </mat-radio-group>
+                                        </mat-list>
+                                    </mat-grid-tile>
+                    
+                                    <mat-grid-tile>
+                                        <div class="full-width">
+                                            <mat-form-field style="width:100%">
+                                                <mat-label>Description</mat-label>
+                                                <textarea matInput formControlName="desc"></textarea>
+                                            </mat-form-field>&nbsp;&nbsp;
+                                        </div>
+                                    </mat-grid-tile>
+                                    <mat-grid-tile [colspan]="2">
+                                        <button mat-button type="submit">UPDATE</button>
+                                    </mat-grid-tile>
+                                </mat-grid-list>
+                            </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div *ngIf="!display">
+            <mat-card>
+                <mat-card-title>
+                    Sorry, entered video ID is not present in the database!
+                </mat-card-title>
+            </mat-card>
+        </div>
+        <button mat-button (click)="back()">BACK</button>
+    </div>

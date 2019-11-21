@@ -1,1 +1,25 @@
-<p>update-data works!</p>
+<mat-card>
+        <mat-card-title>
+            Update Specific
+        </mat-card-title>
+        <mat-card-content>
+            <div>
+                <form [formGroup]="idForm" (ngSubmit)="onSubmit()">
+                    <mat-grid-list cols="2" rowHeight="6:1">
+                        <mat-grid-tile>
+                            <mat-form-field>
+                                <mat-label>Enter Video ID</mat-label>
+                                <input matInput formControlName="videoId" required>
+                                <mat-error *ngIf="videoId.hasError('required')">
+                                    Input is required
+                                </mat-error>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <button mat-button type="submit">RETRIEVE DETAILS TO UPDATE</button>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </form>
+            </div>
+        </mat-card-content>
+    </mat-card>

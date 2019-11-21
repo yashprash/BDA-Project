@@ -61,18 +61,18 @@ export class UserFormComponent implements OnInit {
 
   onSubmit(){
     console.log(this.videoForm.value);
-    if(this.videoForm.valid)
+    if(this.videoForm.invalid)
     {
       this.snackBar.open("Please enter all required fields",null, {
-        duration: 2000,
+        duration: 10000,
         panelClass: ['red-snackbar']
       });
     }
     else
     {
-      this.sendData.sendData(this.videoForm.value).then(response=>{
-        this.snackBar.open("Your fees details have been successfully submitted",null, {
-          duration: 2000,
+      this.sendData.sendData(this.videoForm.value,0).then(response=>{
+        this.snackBar.open("Video details have been successfully submitted",null, {
+          duration: 10000,
           panelClass: ['green-snackbar']
         });
       })

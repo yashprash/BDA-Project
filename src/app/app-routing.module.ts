@@ -6,9 +6,19 @@ import { SelectDataComponent } from './components/select-data/select-data.compon
 import { UpdateDataComponent } from './components/update-data/update-data.component';
 import { DeleteDataComponent } from './components/delete-data/delete-data.component';
 import { MainContainerComponent } from './components/main-container/main-container.component';
+import { SelectSpecificComponent } from './components/select-specific/select-specific.component';
+import { UpdateSpecificComponent } from './components/update-specific/update-specific.component';
+import { APIResolver } from './services/APIResolver';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: MainContainerComponent },
+  { path: 'select/:id', component: SelectSpecificComponent },
+  { path: 'update/:id', 
+  component: UpdateSpecificComponent,
+  // resolve: {
+  //   data: APIResolver
+  //   },
+  },
   { path: '',
     redirectTo: 'welcome',
     pathMatch: 'full'
