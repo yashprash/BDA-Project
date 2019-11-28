@@ -32,6 +32,11 @@ exports.routers = function(route)
       res.send(response);
     })
   });
-  
+  route.post('/search',(req,res)=>{
+    //console.log(req.body.videoKey);
+  services.findDB(collname,{title:{$regex:req.body.videoKey,$options:"$i"}},{}).then(response=>{
+    res.send(response);
+  })
+});
   return route;
 }

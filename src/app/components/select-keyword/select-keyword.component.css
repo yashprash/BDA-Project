@@ -1,0 +1,45 @@
+.mat-grid-tile{
+    display: block;
+}
+
+.mat-radio-group{
+    display: block;
+}
+
+.mat-radio-button{
+    display:block;
+}
+
+.mat-button{
+    color: white;
+    background-color: blue;
+}
+
+.mat-list-base{
+    margin-left: -140px;
+}
+
+.mat-form-field{
+    width: 50%;
+}
+
+.full-width{
+    width: 70%;
+}
+
+.mat-card{
+    margin:20px;
+}
+
+ 
+ /* .ng-invalid[required] {
+    border: 5px solid red; 
+  } */
+
+  .mat-snack-bar-container.red-snackbar{
+      background-color: red !important;
+  }
+
+  .mat-snack-bar-container.green-snackbar{
+      background-color: green !important;
+  }

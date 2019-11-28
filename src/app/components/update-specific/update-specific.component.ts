@@ -51,6 +51,7 @@ export class UpdateSpecificComponent implements OnInit {
   com: boolean;
   rat: boolean;
   err: boolean;
+  catValue: any;
   categories=["Film & Animation","Autos & Vehicles","Music",
   "Pets & Animals","Sports","Short Movies","Travel & Events",
   "Gaming","Videoblogging","People & Blogs","Comedy",
@@ -84,7 +85,7 @@ export class UpdateSpecificComponent implements OnInit {
       trendingDate:[this.video[0].trendingDate, Validators.required],
       title:[this.video[0].title, Validators.required],
       channelTitle:[this.video[0].channelTitle, Validators.required],
-      category:['', Validators.required],
+      category:[this.video[0].category, Validators.required],
       publishTime:[this.video[0].publishTime,Validators.required],
       tags:[this.video[0].tags, Validators.required],
       views:[this.video[0].views, Validators.required],
@@ -101,6 +102,7 @@ export class UpdateSpecificComponent implements OnInit {
     this.com=this.video[0].comDisabled;
     this.rat=this.video[0].ratDisabled;
     this.err=this.video[0].videoError;
+    this.catValue=this.video[0].category;
     //console.log(this.selectedCat)
   }
 

@@ -28,6 +28,10 @@ export class SelectDataComponent implements OnInit {
     videoId:['',Validators.required]
   });
 
+  keyForm = this.fb.group({
+    videoKey:['',Validators.required]
+  });
+
   ngOnInit() {
     this.getData.getData().then(response=>{
       console.log(response);
@@ -36,6 +40,7 @@ export class SelectDataComponent implements OnInit {
   }
 
   get videoId(){return this.idForm.get('videoId');}
+  get videoKey(){return this.keyForm.get('videoKey');}
 
   onSubmit(){
     if(this.idForm.invalid)
@@ -48,6 +53,21 @@ export class SelectDataComponent implements OnInit {
     else
     {
       this.router.navigate(['select', this.idForm.value.videoId]);
+    }
+  }
+
+  onSubmitSearch()
+  {
+    if(this.keyForm.invalid)
+    {
+      this.snackBar.open("Please enter all required fields",null, {
+        duration: 5000,
+        panelClass: ['red-snackbar']
+      });
+    }
+    else
+    {
+      this.router.navigate(['search', this.keyForm.value.videoKey]);
     }
   }
 

@@ -10,12 +10,10 @@
                                     <mat-grid-tile>
                                         <mat-form-field>
                                             <mat-label>Trending Date</mat-label>
-                                                <input matInput [matDatepicker]="picker" [value]="video[0].trendingDate" placeholder="Choose a date" formControlName="trendingDate">
-                                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                                <mat-datepicker #picker></mat-datepicker>
-                                                <mat-error *ngIf="trendingDate.hasError('required')">
+                                            <input matInput formControlName="trendingDate" required>
+                                            <mat-error *ngIf="trendingDate.hasError('required')">
                                                     Input is required
-                                                </mat-error>
+                                            </mat-error>
                                         </mat-form-field>
                                     </mat-grid-tile>
                                     <mat-grid-tile>
@@ -39,7 +37,7 @@
                                     <mat-grid-tile>
                                         <mat-form-field>
                                             <mat-label>Category</mat-label>
-                                            <mat-select formControlName="category" [(value)]="selectedCat" required>
+                                            <mat-select [(value)]="catValue" formControlName="category" [(value)]="selectedCat" required>
                                                 <mat-option *ngFor="let cat of categories" [value]="catIds[cat]">
                                                 {{cat}}
                                                 </mat-option>
@@ -114,18 +112,14 @@
                                         </mat-form-field>
                                     </mat-grid-tile>
                                     <mat-grid-tile>
-                                            <mat-list>
-                                                Are Comments Disabled?
-                                                <mat-radio-group formControlName="comDisabled" required>
-                                                    <mat-radio-button *ngFor="let type of types" [value]="type">{{type}}</mat-radio-button><br/>
-                                                    <div *ngIf="comDisabled.invalid && (comDisabled.dirty || comDisabled.touched)">
-                                                        <mat-error *ngIf="comDisabled.hasError('required')">
-                                                                Input is required
-                                                        </mat-error>
-                                                    </div>
-                                                </mat-radio-group>
-                                            </mat-list>
-                                        </mat-grid-tile>
+                                        <mat-form-field>
+                                            <mat-label>Are Comments Disabled?</mat-label>
+                                            <input matInput formControlName="comDisabled" required>
+                                                <mat-error *ngIf="comDisabled.hasError('required')">
+                                                        Input is required
+                                                </mat-error>
+                                        </mat-form-field>
+                                    </mat-grid-tile>
                                     <!-- <mat-grid-tile>
                                         <mat-list>
                                             Are Comments Disabled?
@@ -144,30 +138,22 @@
                                         </mat-list>
                                     </mat-grid-tile> -->
                                     <mat-grid-tile>
-                                        <mat-list>
-                                            Are Ratings Disabled?
-                                            <mat-radio-group formControlName="ratDisabled" required>
-                                                <mat-radio-button *ngFor="let type of types" [value]="type">{{type}}</mat-radio-button><br/>
-                                                <div *ngIf="ratDisabled.invalid && (ratDisabled.dirty || ratDisabled.touched)">
-                                                    <mat-error *ngIf="ratDisabled.hasError('required')">
-                                                            Input is required
-                                                    </mat-error>
-                                                </div>
-                                            </mat-radio-group>
-                                        </mat-list>
+                                        <mat-form-field>
+                                            <mat-label>Are Ratings Disabled?</mat-label>
+                                            <input matInput formControlName="ratDisabled" required>
+                                                <mat-error *ngIf="ratDisabled.hasError('required')">
+                                                        Input is required
+                                                </mat-error>
+                                        </mat-form-field>
                                     </mat-grid-tile>
                                     <mat-grid-tile>
-                                        <mat-list>
-                                            Is there an error in the video?
-                                            <mat-radio-group formControlName="videoError" required>
-                                                <mat-radio-button *ngFor="let type of types" [value]="type">{{type}}</mat-radio-button><br/>
-                                                <div *ngIf="videoError.invalid && (videoError.dirty || videoError.touched)">
-                                                    <mat-error *ngIf="videoError.hasError('required')">
-                                                            Input is required
-                                                    </mat-error>
-                                                </div>
-                                            </mat-radio-group>
-                                        </mat-list>
+                                        <mat-form-field>
+                                            <mat-label>Error in Video?</mat-label>
+                                            <input matInput formControlName="videoError" required>
+                                                <mat-error *ngIf="videoError.hasError('required')">
+                                                        Input is required
+                                                </mat-error>
+                                        </mat-form-field>
                                     </mat-grid-tile>
                     
                                     <mat-grid-tile>

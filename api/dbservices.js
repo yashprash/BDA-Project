@@ -43,11 +43,12 @@ exports.insertDB = function(coll, obj){
 // }
 
 //select documents
-exports.findDB = function(collection,query = null,projection = null){
+exports.findDB = function(collection,query,projection){
     return new Promise((resolve,reject)=>{
     MongoClient.connect(url, function(err, dbconn) {
         if (err) throw err;
         var db = dbconn.db(conn.dbname);
+        console.log(query);
         db.collection(collection).find(query,projection).limit(100).toArray(function(err, res) {
             if (err) throw err;
             //console.log(res);

@@ -9,6 +9,7 @@ import { MainContainerComponent } from './components/main-container/main-contain
 import { SelectSpecificComponent } from './components/select-specific/select-specific.component';
 import { UpdateSpecificComponent } from './components/update-specific/update-specific.component';
 import { APIResolver } from './services/APIResolver';
+import { SelectKeywordComponent } from './components/select-keyword/select-keyword.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: MainContainerComponent },
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
   //   data: APIResolver
   //   },
   },
+  { path: 'search/:id', component: SelectKeywordComponent},
   { path: '',
     redirectTo: 'welcome',
     pathMatch: 'full'

@@ -4,6 +4,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 
 import {MatSnackBar} from '@angular/material/snack-bar';
 import {SendDataService} from '../../services/send-data.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-form',
@@ -50,7 +51,8 @@ export class UserFormComponent implements OnInit {
   "Family":37,"Foreign":38,"Horror":39,"Sci-Fi/Fantasy":40,"Thriller":41,
   "Shorts":42,"Shows":43,"Trailers":44};
   types=["True","False"];
-  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, private sendData: SendDataService) 
+  constructor(private fb: FormBuilder, private snackBar: MatSnackBar, 
+    private sendData: SendDataService, private router: Router) 
   { 
 
   }
@@ -64,7 +66,7 @@ export class UserFormComponent implements OnInit {
     if(this.videoForm.invalid)
     {
       this.snackBar.open("Please enter all required fields",null, {
-        duration: 10000,
+        duration: 6000,
         panelClass: ['red-snackbar']
       });
     }
@@ -72,10 +74,12 @@ export class UserFormComponent implements OnInit {
     {
       this.sendData.sendData(this.videoForm.value,0).then(response=>{
         this.snackBar.open("Video details have been successfully submitted",null, {
-          duration: 10000,
+          duration: 6000,
           panelClass: ['green-snackbar']
         });
+        this.router.navigate(['welcome']);
       })
+      
     }
   }
 

@@ -20,6 +20,22 @@
                     </mat-grid-tile>
                 </mat-grid-list>
             </form>
+            <form [formGroup]="keyForm" (ngSubmit)="onSubmitSearch()">
+                    <mat-grid-list cols="2" rowHeight="6:1">
+                        <mat-grid-tile>
+                            <mat-form-field>
+                                <mat-label>Enter keyword in video name</mat-label>
+                                <input matInput formControlName="videoKey" required>
+                                <mat-error *ngIf="videoKey.hasError('required')">
+                                    Input is required
+                                </mat-error>
+                            </mat-form-field>
+                        </mat-grid-tile>
+                        <mat-grid-tile>
+                            <button mat-button type="submit">RETRIEVE DETAILS</button>
+                        </mat-grid-tile>
+                    </mat-grid-list>
+                </form>
         </div>
     </mat-card-content>
 </mat-card>

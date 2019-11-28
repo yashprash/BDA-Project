@@ -35,6 +35,7 @@ import { MainContainerComponent } from './components/main-container/main-contain
 import { SelectSpecificComponent } from './components/select-specific/select-specific.component';
 import { UpdateSpecificComponent } from './components/update-specific/update-specific.component';
 import { APIResolver } from './services/APIResolver';
+import { SelectKeywordComponent } from './components/select-keyword/select-keyword.component';
 
 
 
@@ -47,7 +48,8 @@ import { APIResolver } from './services/APIResolver';
     DeleteDataComponent,
     MainContainerComponent,
     SelectSpecificComponent,
-    UpdateSpecificComponent
+    UpdateSpecificComponent,
+    SelectKeywordComponent
   ],
   imports: [
     BrowserModule,
