@@ -9,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SelectSpecificComponent implements OnInit {
 
-  video: any[];
+  videos: any[];
 
   categories={1:"Film & Animation",2:"Autos & Vehicles",10:"Music",
   15:"Pets & Animals",17:"Sports",18:"Short Movies",19:"Travel & Events",
@@ -29,8 +29,8 @@ export class SelectSpecificComponent implements OnInit {
 
     this.retData.getSpecific({videoId:this.id}).then(response=>{
       console.log(response);
-        this.video=response as any[]; 
-      if(this.video.length!=0)
+        this.videos=response as any[]; 
+      if(this.videos.length!=0)
       {
         this.display=true;
       }
